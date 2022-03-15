@@ -4,6 +4,8 @@ Command Spy is a utility for monitoring new processes on a Windows machine. It a
 
 This uses WMI to get new processes. A caveat to this is WMI is somewhat slow, meaning if a process starts and finishes within a very short time (sub-second), an event may not be triggered.
 
+Requires .NET 4.6.2+
+
 ## Screenshots
 
 ![](screenshots/screenshot_main.png)
