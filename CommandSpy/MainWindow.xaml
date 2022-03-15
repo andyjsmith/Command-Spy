@@ -1,0 +1,46 @@
+﻿<!-- Uses https://github.com/AngryCarrot789/WPFDarkTheme -->
+<Window x:Class="CommandSpy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Loaded="MainWindow_Loaded"
+        Style="{DynamicResource CustomWindowStyle}"
+        Title="Command Spy" Height="450" Width="800"
+        Name="AppWindow">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top" IsLocked="True">
+            <ToolBar>
+                <CheckBox Padding="8 4" Content="Kill New Processes" IsChecked="{Binding ElementName=AppWindow, Path=KillNewProcesses}" />
+                <Button Padding="8 4" Content="Options" Click="Options_Click" />
+                <Button Padding="8 4" Click="ClearLog_Click" Content="Clear" />
+            </ToolBar>
+        </ToolBarTray>
+        <ListView x:Name="listView" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single"
+        HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False">
+            <ListView.View>
+                <GridView x:Name="gridView">
+                    <GridViewColumn Header="Timestamp" Width="140" DisplayMemberBinding="{Binding Timestamp}" />
+                    <GridViewColumn Header="PID" Width="50" DisplayMemberBinding="{Binding PID}" />
+                    <GridViewColumn Header="Process" Width="150" DisplayMemberBinding="{Binding Process}" />
+                    <GridViewColumn Header="Command" Width="auto" DisplayMemberBinding="{Binding Command}" />
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Kill"
+                    Click="KillSelectedProcess" />
+                    <MenuItem Header="Copy Timestamp"
+                    Click="CopySelectedProcessTimestamp" />
+                    <MenuItem Header="Copy PID"
+                    Click="CopySelectedProcessPID" />
+                    <MenuItem Header="Copy Process Name"
+                    Click="CopySelectedProcessName" />
+                    <MenuItem Header="Copy Command"
+                    Click="CopySelectedProcessCommand" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+    </DockPanel>
+</Window>
