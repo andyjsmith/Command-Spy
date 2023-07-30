@@ -158,6 +158,9 @@ namespace CommandSpy
 				"vsjitdebugger.exe",
 				"wfc.exe",
 				"wsl.exe",
+				"wt.exe",
+				"openconsole.exe",
+				"pwsh.exe"
 			};
 			Subscribe();
 		}
